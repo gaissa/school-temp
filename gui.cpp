@@ -17,12 +17,17 @@ Gui::~Gui()
 {
     qDebug() << "\nGUI deleted";
     delete ui;
+
+    for (int i = 0; i < list.length(); i++)
+    {
+        qDebug() << list[i].s->getName();
+    }
 }
 
 void Gui::on_addStudentButton_clicked()
 {
-    QString sname = ui->studentNameEdit->text();
-    QString snumb = ui->studentNumberEdit->text();
+    sname = ui->studentNameEdit->text();
+    snumb = ui->studentNumberEdit->text();
 
     if (sname != "" && snumb != "")
     {
@@ -38,8 +43,8 @@ void Gui::on_addStudentButton_clicked()
 
 void Gui::on_addLecturerButton_clicked()
 {
-    QString lname = ui->lecturerNameEdit->text();
-    int lsala = ui->lecturerSalaryEdit->text().toInt(&ok, 10);
+    lname = ui->lecturerNameEdit->text();
+    lsala = ui->lecturerSalaryEdit->text().toInt(&ok, 10);
 
     if (lname != "" && QString(lsala) != "")
     {
@@ -81,8 +86,8 @@ void Gui::on_listWidget_clicked(const QModelIndex &index)
 
     const QString& s = ui->listWidget->currentItem()->text();
     temp = s.split(',')[0].trimmed();
-    QString temp2 = s.split(',')[1].trimmed();
-    QString temp3 = s.split(',')[2].trimmed();
+    temp2 = s.split(',')[1].trimmed();
+    temp3 = s.split(',')[2].trimmed();
 
     if (temp == "LECTURER")
     {
@@ -122,13 +127,13 @@ void Gui::on_modifyButton_clicked()
     {
         if (temp == "STUDENT")
         {
-            QString sname = ui->studentNameEdit->text();
-            QString snumb = ui->studentNumberEdit->text();
+            sname = ui->studentNameEdit->text();
+            snumb = ui->studentNumberEdit->text();
 
             Student *s = new Student(this, sname + ",", snumb);
 
-            list[listIndex].s->setName(sname);
-            list[listIndex].s->setNumber(snumb);
+            delete list[listIndex].s;
+            list[listIndex].s = s;
 
             QString q = "STUDENT, " +
                         s->getName() +
@@ -140,13 +145,13 @@ void Gui::on_modifyButton_clicked()
          }
          if (temp == "LECTURER")
          {
-             QString lname = ui->lecturerNameEdit->text();
-             int lsala = ui->lecturerSalaryEdit->text().toInt(&ok, 10);
+             lname = ui->lecturerNameEdit->text();
+             lsala = ui->lecturerSalaryEdit->text().toInt(&ok, 10);
 
              Lecturer *l = new Lecturer(this, lname + ",", lsala);
 
-             list[listIndex].l->setName(lname);
-             list[listIndex].l->setSalary(lsala);
+             delete list[listIndex].l;
+             list[listIndex].l = l;
 
              QString q = "LECTURER, " +
                          l->getName() +
@@ -166,10 +171,10 @@ void Gui::on_actionSave_triggered()
 
     for(int i = 0; i < listWidget->count(); ++i)
     {
-         f->setValues(listWidget->item(i)->text());
+         f->saveValues(listWidget->item(i)->text());
     }
 
-    f->printValues();
+    f->writeValues();
     delete f;
 }
 

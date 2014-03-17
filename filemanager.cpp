@@ -12,12 +12,12 @@ FileManager::~FileManager()
     qDebug() << "FILEMANAGER deleted";
 }
 
-void FileManager::setValues(QString q)
+void FileManager::saveValues(QString q)
 {
     personList.append(q);
 }
 
-void FileManager::printValues()
+void FileManager::writeValues()
 {
     for (int i = 0; i < personList.length(); i++)
     {

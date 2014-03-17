@@ -28,14 +28,16 @@ public:
 
 private slots:
     void updateList(holder t, bool check);
+
     void on_addStudentButton_clicked();
     void on_addLecturerButton_clicked();
+
     void on_listWidget_clicked(const QModelIndex &index);
+
     void on_deleteButton_clicked();
     void on_modifyButton_clicked();
 
     void on_actionSave_triggered();
-
     void on_actionLoad_triggered();
 
 private:
@@ -43,10 +45,21 @@ private:
 
     QList<holder> list;
     QListWidget *listWidget;
+
     QString temp;
+    QString temp2;
+    QString temp3;
+
+    QString sname;
+    QString snumb;
+
+    QString lname;
+    int lsala;
 
     holder h;
+
     int listIndex;
+
     bool ok;
 };
 

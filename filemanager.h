@@ -12,8 +12,8 @@ public:
     FileManager();
     ~FileManager();
 
-    void setValues(QString q);
-    void printValues();
+    void saveValues(QString q);
+    void writeValues();
 
 private:
     QList<QString> personList;
