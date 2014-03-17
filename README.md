@@ -1,4 +1,4 @@
 PersonManager
 =============
 
-Qt example for school. Manager persons (lecturers and students)
+Qt example for school. Manage and store persons (lecturers and students).
