@@ -34,6 +34,10 @@ private slots:
     void on_deleteButton_clicked();
     void on_modifyButton_clicked();
 
+    void on_actionSave_triggered();
+
+    void on_actionLoad_triggered();
+
 private:
     Ui::Gui *ui;
 

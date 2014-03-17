@@ -1,6 +1,7 @@
 #include <qDebug>
 #include "gui.h"
 #include "ui_gui.h"
+#include "filemanager.h"
 
 
 Gui::Gui(QWidget *parent) :
@@ -157,4 +158,23 @@ void Gui::on_modifyButton_clicked()
          }
          listIndex = -1;
     }
+}
+
+void Gui::on_actionSave_triggered()
+{
+    FileManager *f = new FileManager();
+
+    for(int i = 0; i < listWidget->count(); ++i)
+    {
+         f->setValues(listWidget->item(i)->text());
+    }
+
+    f->printValues();
+    delete f;
+}
+
+void Gui::on_actionLoad_triggered()
+{
+    FileManager *f = new FileManager();
+    delete f;
 }

@@ -10,9 +10,11 @@ INCLUDEPATH += .
 
 # Input
 HEADERS     += lecturer.h person.h student.h \
-               gui.h
+               gui.h \
+    filemanager.h
 
 SOURCES     += lecturer.cpp main.cpp person.cpp student.cpp \
-               gui.cpp
+               gui.cpp \
+    filemanager.cpp
 
 FORMS       += gui.ui
