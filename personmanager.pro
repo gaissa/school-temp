@@ -5,7 +5,7 @@
 QT          += gui widgets
 
 TEMPLATE    = app
-TARGET      = 04
+TARGET      = personmanager
 INCLUDEPATH += .
 
 # Input
