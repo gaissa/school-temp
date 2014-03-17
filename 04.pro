@@ -15,4 +15,4 @@ HEADERS     += lecturer.h person.h student.h \
 SOURCES     += lecturer.cpp main.cpp person.cpp student.cpp \
                gui.cpp
 
-FORMS += gui.ui
+FORMS       += gui.ui
