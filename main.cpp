@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Gui g;
+    Gui g;  
+    g.setWindowTitle(" ");
     g.show();
 
     return a.exec();
