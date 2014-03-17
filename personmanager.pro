@@ -8,13 +8,12 @@ TEMPLATE    = app
 TARGET      = personmanager
 INCLUDEPATH += .
 
-# Input
 HEADERS     += lecturer.h person.h student.h \
-               gui.h \
-    filemanager.h
+               filemanager.h \
+               gui.h
 
 SOURCES     += lecturer.cpp main.cpp person.cpp student.cpp \
-               gui.cpp \
-    filemanager.cpp
+               filemanager.cpp \
+               gui.cpp
 
 FORMS       += gui.ui

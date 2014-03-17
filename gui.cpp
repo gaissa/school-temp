@@ -62,19 +62,13 @@ void Gui::updateList(holder h, bool check)
 {
     if (check == true)
     {
-        QString q = "STUDENT, " +
-                    h.s->getName() +
-                    " " +
-                    h.s->getNumber();
-
+        q = "STUDENT, " + h.s->getName() + " " + h.s->getNumber();
         new QListWidgetItem(QString(q), listWidget);
     }
     else
     {
-        QString q = "LECTURER, " +
-                    h.l->getName() +
-                    " " +
-                    QString::number(h.l->getSalary());
+        q = "LECTURER, " + h.l->getName() + " " +
+            QString::number(h.l->getSalary());
 
         new QListWidgetItem(QString(q), listWidget);
     }
@@ -135,10 +129,7 @@ void Gui::on_modifyButton_clicked()
             delete list[listIndex].s;
             list[listIndex].s = s;
 
-            QString q = "STUDENT, " +
-                        s->getName() +
-                        " " +
-                        s->getNumber();
+            q = "STUDENT, " + s->getName() + " " + s->getNumber();
 
             delete listWidget->takeItem(listIndex);
             listWidget->insertItem(listIndex, q);
@@ -153,10 +144,8 @@ void Gui::on_modifyButton_clicked()
              delete list[listIndex].l;
              list[listIndex].l = l;
 
-             QString q = "LECTURER, " +
-                         l->getName() +
-                         " " +
-                         QString::number(l->getSalary());
+             q = "LECTURER, " + l->getName() + " " +
+                 QString::number(l->getSalary());
 
              delete listWidget->takeItem(listIndex);
              listWidget->insertItem(listIndex, q);

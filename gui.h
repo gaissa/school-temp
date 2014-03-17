@@ -56,6 +56,8 @@ private:
     QString lname;
     int lsala;
 
+    QString q;
+
     holder h;
 
     int listIndex;
