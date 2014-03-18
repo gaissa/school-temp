@@ -160,6 +160,7 @@ void Gui::on_actionSave_triggered()
 
     this->setWindowTitle(f->writeValues());
     delete f;
+    this->setWindowState(Qt::WindowActive);
 }
 
 void Gui::on_actionLoad_triggered()
@@ -195,6 +196,7 @@ void Gui::on_actionLoad_triggered()
         new QListWidgetItem(qq[i], listWidget);
     }
 
+    this->setWindowTitle(f->getFileName());
     delete f;
     this->setWindowState(Qt::WindowActive);
 }

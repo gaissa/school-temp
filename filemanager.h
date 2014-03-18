@@ -17,6 +17,8 @@ public:
     QString writeValues();
     void readValues();
 
+    QString getFileName();
+
 private:
     QStringList personList;
     QStringList loadedList;

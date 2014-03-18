@@ -2,7 +2,6 @@
 #include <QDebug>
 #include <QFile>
 #include <QTextStream>
-#include <QDir>
 #include <QFileDialog>
 
 
@@ -24,34 +23,28 @@ void FileManager::saveValues(QString q)
 QStringList FileManager::loadValues()
 {
     loadFile = QFileDialog::getOpenFileName(this,
-               QObject::tr("Open File"), "lista.txt", QObject::tr("Text Files (*.txt)"));
+               QObject::tr("LOAD"),
+               "list",
+               QObject::tr("Text Files (*.txt)"));
 
     readValues();
     return loadedList;
 }
 
+QString FileManager::getFileName()
+{
+    return loadFile;
+}
+
 QString FileManager::writeValues()
 {
-    QStringList nameFilter("*.txt");
-    QDir directory("./");
-    QStringList txtFiles = directory.entryList(nameFilter);
+    QString filename = QFileDialog::getSaveFileName(this,
+                       QObject::tr("SAVE"),
+                       "",
+                       QObject::tr("Text Files (*.txt)"));
 
-    if (txtFiles.length() != 0)
-    {
-        saveFile = txtFiles[txtFiles.length()-1];
-
-        int a = saveFile.split("-")[0].toInt();
-        a++;
-
-        saveFile = QString::number(a);
-    }
-    else
-    {
-        saveFile = "1";
-    }
-
-    QFile file("0" + saveFile + "-list.txt");
-    file.open(QIODevice::WriteOnly | QIODevice::Text);
+    QFile file(filename);
+    file.open(QIODevice::WriteOnly);
 
     QTextStream out(&file);
 
@@ -61,7 +54,7 @@ QString FileManager::writeValues()
     }
     file.close();
 
-    return "0" + saveFile + "-list.txt";
+    return filename;
 }
 
 void FileManager::readValues()
@@ -76,10 +69,12 @@ void FileManager::readValues()
 
     QTextStream instream(&file);
 
-     do {
+     do
+     {
          line = instream.readLine();
          loadedList.append(line);
-     } while (!line.isNull());
+     }
+     while (!line.isNull());
 
     loadedList.removeAt(loadedList.length()-1);
 
