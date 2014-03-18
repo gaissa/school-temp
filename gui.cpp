@@ -16,11 +16,6 @@ Gui::~Gui()
 {
     qDebug() << "\nGUI deleted";
     delete ui;
-
-    //for (int i = 0; i < list.length(); i++)
-    //{
-        //qDebug() << list[i].s->getName();
-    //}
 }
 
 void Gui::on_addStudentButton_clicked()
@@ -62,6 +57,7 @@ void Gui::updateList(holder h, bool check)
     if (check == true)
     {
         q = "STUDENT, " + h.s->getName() + " " + h.s->getNumber();
+
         new QListWidgetItem(QString(q), listWidget);
     }
     else
@@ -78,7 +74,7 @@ void Gui::on_listWidget_clicked(const QModelIndex &index)
     listIndex = index.row();
 
     const QString& s = ui->listWidget->currentItem()->text();
-    temp = s.split(',')[0].trimmed();
+    temp  = s.split(',')[0].trimmed();
     temp2 = s.split(',')[1].trimmed();
     temp3 = s.split(',')[2].trimmed();
 
@@ -173,16 +169,32 @@ void Gui::on_actionLoad_triggered()
     for (int i = 0; i < list.length(); i++)
     {
         delete &list.at(i);
-        //qDebug() << i;
     }
 
     list.clear();
 
     FileManager *f = new FileManager();
-
     QStringList qq = f->loadValues();
-    qDebug() << qq[0];
-    delete f;
 
+    for (int i = 0; i < qq.length(); i++)
+    {
+        temp  = qq[i].split(",")[0];
+        temp2 = qq[i].split(",")[1];
+        temp3 = qq[i].split(",")[2];
+
+        if (temp == "STUDENT")
+        {
+            h.s = new Student(this, temp2 + ",", temp3);
+            list.append(h);
+        }
+        if (temp == "LECTURER")
+        {
+            h.l = new Lecturer(this, temp2 + ",", temp3.toInt());
+            list.append(h);
+        }
+        new QListWidgetItem(qq[i], listWidget);
+    }
+
+    delete f;
     this->setWindowState(Qt::WindowActive);
 }
