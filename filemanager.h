@@ -22,7 +22,7 @@ public:
 private:
     QStringList personList;
     QStringList loadedList;
-    QString saveFile;
+
     QString loadFile;
 };
 

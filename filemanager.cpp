@@ -20,30 +20,14 @@ void FileManager::saveValues(QString q)
     personList.append(q);
 }
 
-QStringList FileManager::loadValues()
-{
-    loadFile = QFileDialog::getOpenFileName(this,
-               QObject::tr("LOAD"),
-               "list",
-               QObject::tr("Text Files (*.txt)"));
-
-    readValues();
-    return loadedList;
-}
-
-QString FileManager::getFileName()
-{
-    return loadFile;
-}
-
 QString FileManager::writeValues()
 {
-    QString filename = QFileDialog::getSaveFileName(this,
+    loadFile = QFileDialog::getSaveFileName(this,
                        QObject::tr("SAVE"),
                        "",
-                       QObject::tr("Text Files (*.txt)"));
+                       QObject::tr("PersonalManager Files (*.pmf)"));
 
-    QFile file(filename);
+    QFile file(loadFile);
     file.open(QIODevice::WriteOnly);
 
     QTextStream out(&file);
@@ -54,7 +38,18 @@ QString FileManager::writeValues()
     }
     file.close();
 
-    return filename;
+    return loadFile;
+}
+
+QStringList FileManager::loadValues()
+{
+    loadFile = QFileDialog::getOpenFileName(this,
+               QObject::tr("LOAD"),
+               "list",
+               QObject::tr("PersonalManager Files (*.pmf)"));
+
+    readValues();
+    return loadedList;
 }
 
 void FileManager::readValues()
@@ -67,11 +62,11 @@ void FileManager::readValues()
        qDebug() << "error opening file: " << file.error();
     }
 
-    QTextStream instream(&file);
+    QTextStream inStream(&file);
 
      do
      {
-         line = instream.readLine();
+         line = inStream.readLine();
          loadedList.append(line);
      }
      while (!line.isNull());
@@ -79,4 +74,9 @@ void FileManager::readValues()
     loadedList.removeAt(loadedList.length()-1);
 
     file.close();
+}
+
+QString FileManager::getFileName()
+{
+    return loadFile;
 }
