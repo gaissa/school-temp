@@ -20,8 +20,8 @@ Gui::~Gui()
 
 void Gui::on_addStudentButton_clicked()
 {
-    sname = ui->studentNameEdit->text();
-    snumb = ui->studentNumberEdit->text();
+    sname = ui->studentNameEdit->text().replace(",", "");;
+    snumb = ui->studentNumberEdit->text().replace(",", "");;
 
     if (sname != "" && snumb != "")
     {
@@ -37,7 +37,7 @@ void Gui::on_addStudentButton_clicked()
 
 void Gui::on_addLecturerButton_clicked()
 {
-    lname = ui->lecturerNameEdit->text();
+    lname = ui->lecturerNameEdit->text().replace(",", "");
     lsala = ui->lecturerSalaryEdit->text().toInt(&ok, 10);
 
     if (lname != "" && QString(lsala) != "")
@@ -80,13 +80,13 @@ void Gui::on_listWidget_clicked(const QModelIndex &index)
 
     if (temp == "LECTURER")
     {
-        ui->lecturerNameEdit->setText(temp2);
+        ui->lecturerNameEdit->setText(temp2.replace(",", ""));
         ui->lecturerSalaryEdit->setText(temp3);
     }
     if (temp == "STUDENT")
     {
-        ui->studentNameEdit->setText(temp2);
-        ui->studentNumberEdit->setText(temp3);
+        ui->studentNameEdit->setText(temp2.replace(",", ""));
+        ui->studentNumberEdit->setText(temp3.replace(",", ""));
     }
 }
 

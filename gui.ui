@@ -138,20 +138,20 @@
     <property name="title">
      <string>FILE</string>
     </property>
-    <addaction name="actionSave"/>
     <addaction name="actionLoad"/>
+    <addaction name="actionSave"/>
    </widget>
    <addaction name="menuFILE"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionSave">
-   <property name="text">
-    <string>SAVE</string>
-   </property>
-  </action>
   <action name="actionLoad">
    <property name="text">
     <string>LOAD</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>SAVE AS</string>
    </property>
   </action>
  </widget>
