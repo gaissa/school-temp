@@ -3,7 +3,6 @@
 #include "ui_gui.h"
 #include "filemanager.h"
 
-
 Gui::Gui(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Gui)
@@ -18,10 +17,10 @@ Gui::~Gui()
     qDebug() << "\nGUI deleted";
     delete ui;
 
-    for (int i = 0; i < list.length(); i++)
-    {
-        qDebug() << list[i].s->getName();
-    }
+    //for (int i = 0; i < list.length(); i++)
+    //{
+        //qDebug() << list[i].s->getName();
+    //}
 }
 
 void Gui::on_addStudentButton_clicked()
@@ -163,17 +162,27 @@ void Gui::on_actionSave_triggered()
          f->saveValues(listWidget->item(i)->text());
     }
 
-    f->writeValues();
+    this->setWindowTitle(f->writeValues());
     delete f;
 }
 
 void Gui::on_actionLoad_triggered()
 {
     listWidget->clear();
+
+    for (int i = 0; i < list.length(); i++)
+    {
+        delete &list.at(i);
+        //qDebug() << i;
+    }
+
     list.clear();
-    //qDebug() << list.length()
-    //delete &list.at(0);
 
     FileManager *f = new FileManager();
+
+    QStringList qq = f->loadValues();
+    qDebug() << qq[0];
     delete f;
+
+    this->setWindowState(Qt::WindowActive);
 }

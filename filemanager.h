@@ -1,10 +1,10 @@
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
 
-#include <QList>
+#include <gui.h>
 
 
-class FileManager
+class FileManager : Gui
 {
 
 public:
@@ -12,14 +12,16 @@ public:
     ~FileManager();
 
     void saveValues(QString q);
-    QString loadValues();
+    QStringList loadValues();
 
-    void writeValues();
+    QString writeValues();
     void readValues();
 
 private:
-    QList<QString> personList;
-
+    QStringList personList;
+    QStringList loadedList;
+    QString saveFile;
+    QString loadFile;
 };
 
 #endif // FILEMANAGER_H
