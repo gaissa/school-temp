@@ -7,7 +7,8 @@
 #include "gui.h"
 
 
-// Application where you can manage persons (lecturers and students).
+// Application where you can
+// manage persons// (lecturers and students).
 // You can add, delete and modify a person.
 int main(int argc, char *argv[])
 {

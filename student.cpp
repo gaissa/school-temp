@@ -2,7 +2,8 @@
 #include "student.h"
 
 
-Student::Student(QObject *parent, QString n, QString nu) : Person(parent, n)
+Student::Student(QObject *parent, QString n, QString nu) :
+         Person(parent, n)
 {   
     setName(n);
     setNumber(nu);

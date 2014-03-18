@@ -4,8 +4,8 @@
 #include "filemanager.h"
 
 Gui::Gui(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Gui)
+     QMainWindow(parent),
+     ui(new Ui::Gui)
 {
     ui->setupUi(this);
     listWidget = ui->listWidget;

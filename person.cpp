@@ -3,7 +3,8 @@
 #include <qDebug>
 
 
-Person::Person(QObject *parent, QString n) : QObject(parent)
+Person::Person(QObject *parent, QString n) :
+        QObject(parent)
 {
     name = n;
     qDebug() << "\nPerson" << name << "created";

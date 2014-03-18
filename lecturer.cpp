@@ -2,7 +2,8 @@
 #include "lecturer.h"
 
 
-Lecturer::Lecturer(QObject *parent,  QString n, int s) : Person(parent, n)
+Lecturer::Lecturer(QObject *parent,  QString n, int s) :
+          Person(parent, n)
 {
     setName(n);
     setSalary(s);
