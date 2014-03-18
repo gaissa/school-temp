@@ -1,19 +1,21 @@
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
 
-#include "gui.h"
 #include <QList>
 
 
-class FileManager : public Gui
+class FileManager
 {
-public:
 
+public:
     FileManager();
     ~FileManager();
 
     void saveValues(QString q);
+    QString loadValues();
+
     void writeValues();
+    void readValues();
 
 private:
     QList<QString> personList;

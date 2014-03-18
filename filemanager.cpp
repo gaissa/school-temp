@@ -17,10 +17,21 @@ void FileManager::saveValues(QString q)
     personList.append(q);
 }
 
+QString FileManager::loadValues()
+{
+    QString temp;
+    return temp;
+}
+
 void FileManager::writeValues()
 {
     for (int i = 0; i < personList.length(); i++)
     {
         qDebug() << personList[i];
     }
+}
+
+void FileManager::readValues()
+{
+
 }

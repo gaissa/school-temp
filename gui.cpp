@@ -169,6 +169,11 @@ void Gui::on_actionSave_triggered()
 
 void Gui::on_actionLoad_triggered()
 {
+    listWidget->clear();
+    list.clear();
+    //qDebug() << list.length()
+    //delete &list.at(0);
+
     FileManager *f = new FileManager();
     delete f;
 }
